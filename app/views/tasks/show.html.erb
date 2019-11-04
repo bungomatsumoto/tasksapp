@@ -1,0 +1,8 @@
+<h3>詳細画面</h3>
+
+<p>登録者: </p>
+<p>タスク名: <%= @task.title %></p>
+<p>タスク詳細: <%= @task.explanation %></p>
+
+<p class="to_other_page"><%= link_to "編集", edit_task_path(@task) %></p>
+<p class="to_other_page"><%= link_to "ユーザーのタスク一覧", tasks_path %></p>

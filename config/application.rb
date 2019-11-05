@@ -15,6 +15,14 @@ module Tasksapp
       # この二行の記述で自動生成しない設定を作成しています。
       g.assets false
       g.helper false
+
+      g.test_framework :rspec,
+                   model_specs: true,
+                   view_specs: false,
+                   helper_specs: false,
+                   routing_specs: false,
+                   controller_specs: false,
+                   request_specs: false
     end
 
     # Settings in config/environments/* take precedence over those specified here.

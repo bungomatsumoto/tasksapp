@@ -35,7 +35,7 @@ RSpec.describe "タスク管理機能", type: :system do
          visit tasks_path
          # click_on '詳細'
          visit task_path(@factory)
-         expect(page).to have_content 'タスクの詳細'
+         expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１','Factoryで作ったデフォルトのコンテント１'
 
          # all('.option_order01').click_link('2')
          # save_and_open_page

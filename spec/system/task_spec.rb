@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "タスク管理機能", type: :system do
   before do
-    FactoryBot.create(:task)
+    @factory = FactoryBot.create(:task)
     FactoryBot.create(:second_task)
   end
 
@@ -34,10 +34,8 @@ RSpec.describe "タスク管理機能", type: :system do
        it '該当タスクの内容が表示されたページに遷移すること' do
          visit tasks_path
          # click_on '詳細'
-
-         @factory = FactoryBot.create(:task)
          visit task_path(@factory)
-         # expect(page).to have_content 'タスクの詳細'
+         expect(page).to have_content 'タスクの詳細'
 
          # all('.option_order01').click_link('2')
          # save_and_open_page

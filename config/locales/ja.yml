@@ -3,6 +3,7 @@ ja:
     index: ユーザーのタスク一覧
     title: タスク名
     explanation: タスク詳細
+    deadline: 終了期限
     create: タスクの新規登録
     show: 詳細
     edit: 編集

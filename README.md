@@ -22,10 +22,10 @@
 
 - herokuへのデプロイ手順
 
-  - 1. masterブランチで作業
-  - 2. $ rails assets:precompile RAILS_ENV=production
-  - 3. $ git add #
-  - 4. $ git commit -m “#”
-  - 5. $ heroku create
-  - 6. $ git push heroku master
-  - 7. $ heroku run rails db:migrate
+  - masterブランチで作業
+  - $ rails assets:precompile RAILS_ENV=production
+  - $ git add #
+  - $ git commit -m “#”
+  - $ heroku create
+  - $ git push heroku master
+  - $ heroku run rails db:migrate

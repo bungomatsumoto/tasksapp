@@ -1,4 +1,13 @@
 ja:
+  view:
+    index: ユーザーのタスク一覧
+    title: タスク名
+    explanation: タスク詳細
+    create: タスクの新規登録
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    destroy_confirm: 本当に削除しますか？
   activerecord:
     errors:
       messages:

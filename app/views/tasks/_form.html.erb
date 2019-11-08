@@ -23,6 +23,11 @@
     <%= f.text_field :deadline %>
   </div>
 
+  <div class="task_status">
+    <%= f.label :status %><br>
+    <%= f.select :status, Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v] }  %>
+  </div>
+
   <div class="button">
     <p><%= f.submit %></p>
   </div>

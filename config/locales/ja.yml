@@ -10,6 +10,10 @@ ja:
     destroy: 削除
     destroy_confirm: 本当に削除しますか？
     sort_by_deadline: 終了期限で並び替え
+    status: 進捗
+    wait: 未着手
+    running: 着手中
+    completed: 完了
   activerecord:
     errors:
       messages:
@@ -19,6 +23,18 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       task: 'タスク'
+    attributes:
+      task:
+        title: タスク名
+        explanation: タスク詳細
+        deadline: 終了期限
+        status: 進捗
+  enums:
+    task:
+      status:
+        wait: 未着手
+        running: 着手中
+        completed: 完了
   date:
     abbr_day_names:
     - 日

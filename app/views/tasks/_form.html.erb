@@ -27,6 +27,10 @@
     <%= f.label :status %><br>
     <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }  %>
 
+  <div class="task_priority">
+    <%= f.label :priority %><br>
+    <%= f.select :priority, Task.priorities.map { |k,v| [t("enums.task.priority.#{k}"), k] }  %>
+
   </div>
 
   <div class="button">

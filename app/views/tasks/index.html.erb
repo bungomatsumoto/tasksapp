@@ -1,8 +1,11 @@
-<h3><%= t('view.index') %></h3>
+<h3><%= link_to t('view.index'), tasks_path %></h3>
 
 <p><%= notice %></p>
 
 <p><%= link_to t('view.sort_by_deadline'), tasks_path(sort_by_deadline: "true") %>
+</p>
+
+<p><%= link_to t('view.sort_by_priority'), tasks_path(sort_by_priority: "true") %>
 </p>
 
 <div class="">
@@ -14,7 +17,7 @@
   <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }, include_blank: true %>
 
   <%= f.hidden_field :search, value: 'true' %>
-  <%= submit 'search', name: nil %>
+  <%= f.submit 'search', name: nil %>
   <% end %>
 </div>
 
@@ -25,6 +28,7 @@
         <th><%= t('view.explanation') %></th>
         <th><%= t('view.deadline') %></th>
         <th><%= t('view.status') %></th>
+        <th><%= t('view.priority') %></th>
         <th><%= t('view.show') %></th>
         <th><%= t('view.edit') %></th>
         <th><%= t('view.destroy') %></th>
@@ -36,6 +40,7 @@
         <td><%= task.explanation %></td>
         <td><%= task.deadline %></td>
         <td><%= t("enums.task.status.#{task.status}") %></td>
+        <td><%= t("enums.task.priority.#{task.priority}") %></td>
         <td class="option_order"><%= link_to t('view.show'), task_path(task.id) %></td>
         <td class="option_order"><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
         <td class="option_order">

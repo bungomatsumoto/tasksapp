@@ -2,13 +2,18 @@ class TasksController < ApplicationController
   before_action :get_id_task, only: [:show, :edit, :update, :destroy]
 
   def index
+    @tasks = Task.all.order(created_at: :desc)
+
     if params[:sort_by_deadline]
 	     @tasks = Task.all.order(deadline: :desc)
-	  else
-	     @tasks = Task.all.order(created_at: :desc)
 	  end
-    if params[:task][:search]
-       @tasks = Task.where("title LIKE ? AND status LIKE ?", "%#{ params[:task][:title] }%", "#{status}")
+
+    if params[:sort_by_priority]
+	     @tasks = Task.all.order(priority: :desc)
+	  end
+
+    if params[:task]
+       @tasks = Task.where("title LIKE ?", "%#{ params[:task][:title] }%").where(status: "#{ params[:task][:status] }")
     end
   end
 
@@ -47,7 +52,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :explanation, :deadline, :status, :search)
+    params.require(:task).permit(:title, :explanation, :deadline, :status, :search, :priority)
   end
 
   def get_id_task

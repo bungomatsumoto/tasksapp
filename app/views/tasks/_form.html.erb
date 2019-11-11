@@ -25,7 +25,8 @@
 
   <div class="task_status">
     <%= f.label :status %><br>
-    <%= f.select :status, Task.statuses.map { |k, v| [t("enums.task.status.#{k}"), v] }  %>
+    <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }  %>
+
   </div>
 
   <div class="button">

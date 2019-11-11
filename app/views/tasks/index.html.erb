@@ -5,6 +5,19 @@
 <p><%= link_to t('view.sort_by_deadline'), tasks_path(sort_by_deadline: "true") %>
 </p>
 
+<div class="">
+  <%= form_with(model: Task.new, method: :get, url: tasks_path, local: true) do |f|%>
+  <%= f.label :title_search %>
+  <%= f.text_field :title %>
+
+  <%= f.label :status_search %>
+  <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }, include_blank: true %>
+
+  <%= f.hidden_field :search, value: 'true' %>
+  <%= submit 'search', name: nil %>
+  <% end %>
+</div>
+
   <div class="task_index">
     <table>
       <tr>

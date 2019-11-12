@@ -7,9 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width">
   </head>
 
   <body>
+
+    <header class="header_container">
+      <h2 id="header_title">TASKSapp</h2>
+    </header>
+
+    <main class="main_container">
     <%= yield %>
+    </main>
+
   </body>
 </html>

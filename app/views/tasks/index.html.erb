@@ -1,29 +1,64 @@
-<h3><%= t('view.index') %></h3>
+<h3><%= link_to t('view.index'), tasks_path %></h3>
 
-<p><%= notice %></p>
+  <p><%= notice %></p>
 
+  <div class="sort_by">
+    <p class="to_other_page"><%= link_to t('view.sort_by_deadline'), tasks_path(sort_by_deadline: "true") %>
+    </p>
+
+    <p class="to_other_page"><%= link_to t('view.sort_by_priority'), tasks_path(sort_by_priority: "true") %>
+    </p>
+  </div>
+
+  <div class="search_area">
+    <%= form_with(model: Task.new, method: :get, url: tasks_path, local: true) do |f|%>
+    <div class="search_item">
+      <%= f.label t('view.title_search') %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="search_item">
+      <%= f.label t('view.status_search') %>
+      <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }, include_blank: true %>
+    </div>
+
+    <%= f.hidden_field :search, value: 'true' %>
+    <div class="search_item">
+      <%= f.submit t('helpers.submit.search'), name: nil %>
+    </div>
+    <% end %>
+  </div>
 
   <div class="task_index">
-    <table>
+    <table class="table_container">
       <tr>
-        <th><%= t('view.title') %></th>
-        <th><%= t('view.explanation') %></th>
-        <th><%= t('view.show') %></th>
-        <th><%= t('view.edit') %></th>
-        <th><%= t('view.destroy') %></th>
+        <th class="table_header"><%= t('view.title') %></th>
+        <th class="table_header"><%= t('view.explanation') %></th>
+        <th class="table_header"><%= t('view.deadline') %></th>
+        <th class="table_header"><%= t('view.status') %></th>
+        <th class="table_header"><%= t('view.priority') %></th>
+        <th class="option_order"><%= t('view.show') %></th>
+        <th class="option_order"><%= t('view.edit') %></th>
+        <th class="option_order"><%= t('view.destroy') %></th>
       </tr>
 
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.title %></td>
-        <td><%= task.explanation %></td>
+        <td id="task_title" class="task_data"><%= task.title %></td>
+        <td class="task_data"><%= task.explanation %></td>
+        <td class="task_data"><%= task.deadline %></td>
+        <td class="task_data"><%= t("enums.task.status.#{task.status}") %></td>
+        <td class="task_data"><%= t("enums.task.priority.#{task.priority}") %></td>
         <td class="option_order"><%= link_to t('view.show'), task_path(task.id) %></td>
         <td class="option_order"><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
-        <td class="option_order"><%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: t('view.destroy_confirm')} %></td>
+        <td class="option_order">
+          <%= link_to t('view.destroy'), task_path(task.id), method: :delete, data: { confirm: t('view.destroy_confirm')} %></td>
       </tr>
 
     <% end %>
     </table>
-    <p class="option_order"><%= link_to t('view.create'), new_task_path %></p>
+
+    <%= paginate @tasks %>
+
+    <p class="to_other_page"><%= link_to t('view.create'), new_task_path %></p>
 
   </div>

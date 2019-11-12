@@ -1,4 +1,12 @@
 ja:
+  view:
+    title_search: タスク名検索
+    status_search: 進捗検索
+    search: 検索
+    pagination.first: 先頭のページ
+    pagination.previous: 直前のページ
+    pagination.next: 次のページ
+    pagination.last: 最後のページ
   activerecord:
     models:
       task: タスク
@@ -6,3 +14,16 @@ ja:
       task:
         title: タスク名
         explanation: タスク詳細
+        deadline: 終了期限
+        status: 進捗
+        priority: 優先順位
+  enums:
+    task:
+      status:
+        wait: 未着手
+        running: 着手中
+        completed: 完了
+      priority:
+        low: 低
+        middle: 中
+        high: 高

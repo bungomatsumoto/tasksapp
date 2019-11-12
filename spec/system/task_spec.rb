@@ -5,7 +5,7 @@ require 'date'
 RSpec.describe "タスク管理機能", type: :system do
   before do
     @factory = FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
+    @factory2 = FactoryBot.create(:second_task)
   end
 
   describe 'タスク一覧画面' do
@@ -74,6 +74,19 @@ RSpec.describe "タスク管理機能", type: :system do
     end
   end
 
+  describe 'タスク編集画面' do
+    context '進捗プルダウンから変更した場合' do
+      it '進捗が更新されること' do
+        visit tasks_path
+        visit edit_task_path(@factory2)
+        select "着手中", from: "task_status"
+        click_on '更新する'
+        # ↑コントローラーのクリエイトアクションのredirect〜によって詳細へ遷移するはず
+        expect(all('tbody tr')[1]).to have_content '着手中'
+      end
+    end
+  end
+
   describe 'タスク一覧画面' do
     context '優先順位並び替えリンクをクリックした場合' do
       it 'タスクが優先順位の降順で並ぶこと' do
@@ -88,5 +101,8 @@ RSpec.describe "タスク管理機能", type: :system do
       end
     end
   end
+
+
+
 
 end

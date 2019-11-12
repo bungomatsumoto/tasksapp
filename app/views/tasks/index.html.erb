@@ -17,7 +17,7 @@
   <%= f.select :status, Task.statuses.map { |k,v| [t("enums.task.status.#{k}"), k] }, include_blank: true %>
 
   <%= f.hidden_field :search, value: 'true' %>
-  <%= f.submit 'search', name: nil %>
+  <%= f.submit t('helpers.submit.search'), name: nil %>
   <% end %>
 </div>
 

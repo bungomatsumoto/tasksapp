@@ -60,7 +60,7 @@ RSpec.describe "タスク管理機能", type: :system do
   end
 
   describe 'タスク一覧画面' do
-    context '終了期限並び替えボタンを押した場合' do
+    context '終了期限並び替えリンクをクリックした場合' do
       it 'タスクが終了期限の降順で並ぶこと' do
         Task.create(id: 1, title: 'MMM', explanation: '09090909', deadline: '2024.3.2')
         Task.create(id: 2, title: 'GGG', explanation: '35353535353', deadline: '2028.3.2')
@@ -74,8 +74,19 @@ RSpec.describe "タスク管理機能", type: :system do
     end
   end
 
+  describe 'タスク一覧画面' do
+    context '優先順位並び替えリンクをクリックした場合' do
+      it 'タスクが優先順位の降順で並ぶこと' do
+        Task.create(id: 1, title: 'MMM', explanation: '09090909', priority: 2)
+        Task.create(id: 2, title: 'GGG', explanation: '35353535353', priority: 0)
+        Task.create(id: 3, title: 'QQQ', explanation: '35353535353', priority: 1)
+        Task.create(id: 4, title: '55555', explanation: '%%%%%%', priority: 2)
+        visit tasks_path
+        click_on '優先順位で並び替え'
+        expect(all('tbody tr').last).to have_content 'GGG'
+        # expect(first('tbody td')).to have_content 'テストを書く','system specで書く'
+      end
+    end
+  end
+
 end
-
-
-# ●タスク登録画面のデータ保存テスト　「5.タスク詳細ページに、テストコードで作成したはずのデータ（記述）がhave_contentされているか（含まれているか）を確認（期待）するコードを書く」　←このコードをコメントアウトしてもテストは成功。テストコードの正しさはどう検証するべき？
-# ●タスク詳細画面の遷移テスト　詳細ページへ遷移させるためにタスクのidはどう取ればいい？

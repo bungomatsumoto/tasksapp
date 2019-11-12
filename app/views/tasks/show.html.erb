@@ -2,11 +2,11 @@
 
 <p><%= notice %></p>
 
-<p><%= t('view.title') %>: <%= @task.title %></p>
-<p><%= t('view.explanation') %>: <%= @task.explanation %></p>
-<p><%= t('view.deadline') %>: <%= @task.deadline %></p>
-<p><%= t('view.status') %>: <%= t("enums.task.status.#{@task.status}") %></p>
-<p><%= t('view.priority') %>: <%= t("enums.task.priority.#{@task.priority}") %></p>
+<p><span class="task_detail"><%= t('view.title') %>:</span> <span class="task_detail02"><%= @task.title %></span></p>
+<p><span class="task_detail"><%= t('view.explanation') %>:</span> <span class="task_detail02"><%= @task.explanation %></span></p>
+<p><span class="task_detail"><%= t('view.deadline') %>:</span> <span class="task_detail02"><%= @task.deadline %></span></p>
+<p><span class="task_detail"><%= t('view.status') %>:</span> <span class="task_detail02"><%= t("enums.task.status.#{@task.status}") %></span></p>
+<p><span class="task_detail"><%= t('view.priority') %>:</span> <span class="task_detail02"><%= t("enums.task.priority.#{@task.priority}") %></span></p>
 
 
 <p class="to_other_page"><%= link_to t('view.edit'), edit_task_path(@task) %></p>

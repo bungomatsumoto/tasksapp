@@ -1,0 +1,122 @@
+body {
+  color: #333;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "sans-serif";
+}
+
+.header_container {
+  background-color: #4169e1;
+}
+
+h2{
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  opacity: 0.5;
+}
+a:link, a:visited {
+  color: #333;
+}
+
+.main_container {
+  width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sort_by {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.sort_by p {
+  margin:0;
+}
+
+.search_area {
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.search_item {
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+}
+.search_item input {
+  border-radius: 0.8rem;
+}
+
+.table_container, .table_header, .task_data, .option_order {
+  border-collapse: collapse;
+  border: solid 1px #9C9C9C
+}
+
+.table_container th, .table_container td {
+  padding: 6px;
+}
+
+#task_title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.task_data {
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.option_order {
+  background-color: #b0e0e6;
+  text-align: center;
+}
+
+.task_detail{
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #98BDDB
+}
+.task_detail02{
+  font-size: 1.8rem;
+}
+
+.task_fill {
+  margin-bottom: 30px;
+}
+
+.button input {
+  border-radius: 0.8rem;
+}
+
+.to_other_page {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  width: 150px;
+  background-color: #f8f8ff;
+  border-radius: 0.8rem;
+  border: solid 0.5px #d3d3d3;
+  text-align: center;
+  font-size: 1.2rem;
+}

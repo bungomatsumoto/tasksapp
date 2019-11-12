@@ -49,6 +49,9 @@
 
     <% end %>
     </table>
+
+    <%= paginate @tasks %>
+
     <p class="option_order"><%= link_to t('view.create'), new_task_path %></p>
 
   </div>

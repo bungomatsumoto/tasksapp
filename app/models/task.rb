@@ -8,4 +8,6 @@ class Task < ApplicationRecord
   scope :search_title, -> (task) { where("title LIKE ?", "%#{task}%")}
   scope :search_status, -> (task) { where(status: "#{task}")}
   scope :search_title_status, -> (title, status) { where("title LIKE ?", "%#{title}%").where(status: "#{status}")}
+
+  paginates_per 10
 end

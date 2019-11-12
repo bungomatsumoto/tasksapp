@@ -18,6 +18,10 @@ ja:
     title_search: タスク名検索
     status_search: 進捗検索
     priority: 優先順位
+    pagination.first: 先頭のページ
+    pagination.previous: 直前のページ
+    pagination.next: 次のページ
+    pagination.last: 最後のページ
   activerecord:
     errors:
       messages:

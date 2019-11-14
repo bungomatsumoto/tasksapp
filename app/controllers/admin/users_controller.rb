@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
-# before_action :if_not_admin
-
+  skip_before_action :must_login
+  before_action :if_not_admin
+  
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def new

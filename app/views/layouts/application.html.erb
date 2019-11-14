@@ -28,6 +28,10 @@
         <% if logged_in? %>
           <%= link_to t('view.profile'), user_path(current_user.id) %>
           <%= link_to t('view.logout'), session_path(current_user.id), method: :delete %>
+          <% if current_user.admin? %>
+          <p class="to_other_page">
+            <%= link_to t('view.admin'), admin_users_path %></p>
+          <% end %>
         <% else %>
           <%= link_to t('view.signup'), new_user_path %>
         <% end %>

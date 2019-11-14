@@ -1,17 +1,19 @@
 ja:
   view:
-    admin: 管理者
+    admin: 管理者画面
     signup: ユーザー登録
     login: ログイン
     logout: ログアウト
     name: ユーザー名
     index: ユーザーのタスク一覧
     title: タスク名
+    title_count: タスク数
     explanation: タスク詳細
     deadline: 終了期限
-    create: タスクの新規登録
+    create: 新規登録
     show: 詳細
     edit: 編集
+    update: 更新
     destroy: 削除
     destroy_confirm: 本当に削除しますか？
     sort_by_deadline: 終了期限で並び替え
@@ -52,6 +54,7 @@ ja:
         email: email
         password: パスワード
         password_confirmation: 確認用パスワード
+        admin: 管理者
   enums:
     task:
       status:

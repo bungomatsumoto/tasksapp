@@ -7,9 +7,13 @@ ja:
     pagination.previous: 直前のページ
     pagination.next: 次のページ
     pagination.last: 最後のページ
+    created_at: 登録日時
+    updated_at: 更新日時
+    email: email
   activerecord:
     models:
       task: タスク
+      user: ユーザー
     attributes:
       task:
         title: タスク名
@@ -17,6 +21,12 @@ ja:
         deadline: 終了期限
         status: 進捗
         priority: 優先順位
+      user:
+        name: ユーザー名
+        email: email
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        admin: 管理者
   enums:
     task:
       status:

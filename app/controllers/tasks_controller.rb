@@ -3,8 +3,8 @@ class TasksController < ApplicationController
 
 
   def index
-    if logged_in?
-      @tasks = Task.page(params[:page]).order(created_at: :desc)
+      # tasksで良くてTaskではないのはなぜ？
+      @tasks = current_user.tasks.page(params[:page]).order(created_at: :desc)
 
       if params[:sort_by_deadline]
         @tasks = Task.page(params[:page]).order(deadline: :desc)
@@ -24,7 +24,6 @@ class TasksController < ApplicationController
         end
         # @tasks = Task.where("title LIKE ?", "%#{ params[:task][:title] }%").where(status: "#{ params[:task][:status] }")
       end
-    end
   end
 
   def new

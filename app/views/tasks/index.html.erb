@@ -31,6 +31,7 @@
   <div class="task_index">
     <table class="table_container">
       <tr>
+        <th class="table_header">ユーザー</th>
         <th class="table_header"><%= t('view.title') %></th>
         <th class="table_header"><%= t('view.explanation') %></th>
         <th class="table_header"><%= t('view.deadline') %></th>
@@ -42,7 +43,9 @@
       </tr>
 
     <% @tasks.each do |task| %>
+    
       <tr>
+        <td id="task_title" class="task_data"><%= task.user.name %></td>
         <td id="task_title" class="task_data"><%= task.title %></td>
         <td class="task_data"><%= task.explanation %></td>
         <td class="task_data"><%= task.deadline %></td>

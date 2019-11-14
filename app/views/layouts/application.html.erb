@@ -17,6 +17,22 @@
     </header>
 
     <main class="main_container">
+
+      <div class="flash_message">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+      </div>
+
+      <div class="login_confirm">
+        <% if logged_in? %>
+          <%= link_to t('view.profile'), user_path(current_user.id) %>
+          <%= link_to t('view.logout'), session_path(current_user.id), method: :delete %>
+        <% else %>
+          <%= link_to t('view.signup'), new_user_path %>
+        <% end %>
+      </div>
+
     <%= yield %>
     </main>
 

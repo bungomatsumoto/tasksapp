@@ -1,26 +1,29 @@
 class TasksController < ApplicationController
   before_action :get_id_task, only: [:show, :edit, :update, :destroy]
 
+
   def index
-    @tasks = Task.page(params[:page]).order(created_at: :desc)
+    if logged_in?
+      @tasks = Task.page(params[:page]).order(created_at: :desc)
 
-    if params[:sort_by_deadline]
-	     @tasks = Task.page(params[:page]).order(deadline: :desc)
-	  end
-
-    if params[:sort_by_priority]
-	     @tasks = Task.page(params[:page]).order(priority: :desc)
-	  end
-
-    if params[:task]
-      if params[:task][:title] && params[:task][:status]
-        @tasks = Task.search_title_status(params[:task][:title],params[:task][:status])
-      elsif params[:task][:title].present?
-        @tasks = Task.search_title(params[:task][:title])
-      elsif params[:task][:status].present?
-        @tasks = Task.search_status(params[:task][:status])
+      if params[:sort_by_deadline]
+        @tasks = Task.page(params[:page]).order(deadline: :desc)
       end
-       # @tasks = Task.where("title LIKE ?", "%#{ params[:task][:title] }%").where(status: "#{ params[:task][:status] }")
+
+      if params[:sort_by_priority]
+        @tasks = Task.page(params[:page]).order(priority: :desc)
+      end
+
+      if params[:task]
+        if params[:task][:title] && params[:task][:status]
+          @tasks = Task.search_title_status(params[:task][:title],params[:task][:status])
+        elsif params[:task][:title].present?
+          @tasks = Task.search_title(params[:task][:title])
+        elsif params[:task][:status].present?
+          @tasks = Task.search_status(params[:task][:status])
+        end
+        # @tasks = Task.where("title LIKE ?", "%#{ params[:task][:title] }%").where(status: "#{ params[:task][:status] }")
+      end
     end
   end
 
@@ -29,7 +32,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to task_path(@task), notice: "タスクを登録しました"
     else
@@ -59,10 +62,11 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :explanation, :deadline, :status, :search, :priority)
+    params.require(:task).permit(:title, :explanation, :deadline, :status, :search, :priority, :user_id)
   end
 
   def get_id_task
     @task = Task.find(params[:id])
   end
+
 end

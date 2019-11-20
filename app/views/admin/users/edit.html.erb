@@ -1,4 +1,11 @@
+<div class="flash_message">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</div>
+
 <h3><%= t('activerecord.models.user')+t('view.edit') %></h3>
+
 
 <%= form_with(model: [:admin, @user], locale: true) do |f| %>
 
@@ -29,7 +36,7 @@
   </div>
 
   <div class="">
-  <%= f.submit t('view.update') %>
+  <%= f.submit t('view.update'), id:"update", class:'update' %>
   </div>
 
 <% end %>

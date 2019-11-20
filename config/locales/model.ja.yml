@@ -10,6 +10,9 @@ ja:
     created_at: 登録日時
     updated_at: 更新日時
     email: email
+    forbidden: 指定されたページを表示する権限がありません
+    doesnt_exist: お探しのページは見つかりません
+    something_wrong: 一時的なエラーが発生しました
   activerecord:
     models:
       task: タスク

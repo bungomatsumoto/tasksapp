@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :must_login
   before_action :if_not_admin
-  
+
   def index
     @users = User.page(params[:page])
   end
@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to admin_user_path(@user), notice: "ユーザー<#{@user.name}>を登録しました"
+      redirect_to admin_users_path, notice: "ユーザー<#{@user.name}>を登録しました"
     else
       render :new
     end
@@ -28,9 +28,12 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "ユーザー<#{@user.name}>を更新しました"
+      redirect_to admin_user_path(@user), notice: "更新しました"
+    elsif User.where(admin: 'true').count == 0
+      flash.now[:alert] = "管理者不在にはできません"
+      render :edit
     else
-      render :new
+      render :edit
     end
   end
 
@@ -40,18 +43,20 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path, notice: "ユーザー<#{@user.name}>を削除しました"
+    if  @user.destroy
+      redirect_to admin_users_path, notice: "ユーザー<#{@user.name}>を削除しました"
+    end
   end
 
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
   end
 
   def if_not_admin
-    redirect_to root_path unless current_user.admin?
+    rescue403 unless current_user.admin?
+    # raise Forbidden unless current_user.admin?
   end
 end

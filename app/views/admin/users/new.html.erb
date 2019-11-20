@@ -21,14 +21,14 @@
   </div>
 
   <div class="">
-  <%= f.label :password %>
-  <%= f.text_field :password %>
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+    管理者権限
   </div>
 
   <div class="">
-  <%= f.label :admin %>
-  <%= f.check_box :admin %>
-  管理者権限
+  <%= f.label :password %>
+  <%= f.text_field :password %>
   </div>
 
   <div class="">
@@ -37,7 +37,8 @@
   </div>
 
   <div class="">
-  <%= f.submit t('view.create my account') %>
+  <%= f.submit t('view.create my account'), id:"create" %>
+  <%#= f.button :button, type: :submit %>
   </div>
 
 <% end %>

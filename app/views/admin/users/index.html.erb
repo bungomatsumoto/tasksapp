@@ -16,10 +16,10 @@
   <% @users.each do |user| %>
 
     <tr>
-      <td id="user_title" class="user_data"><%= link_to user.name, user_path(user.id) %></td>
+      <td id="user_title" class="user_data"><%= link_to user.name, admin_user_path(user.id) %></td>
       <td id="user_title" class="user_data"><%= link_to user.tasks.count, user_path(user.id) %></td>
       <td id="user_email" class="user_data"><%= user.email %></td>
-      <td class="user_data"><%= user.admin? ? 'Yes' : 'No' %></td>
+      <td class="user_data"><%= user.admin? ? '◯' : '-' %></td>
       <td class="user_data"><%= user.created_at %></td>
       <td class="user_data"><%= user.updated_at %></td>
       <td class="option_order"><%= link_to t('view.edit'), edit_admin_user_path(user.id) %></td>

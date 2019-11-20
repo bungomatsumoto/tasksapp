@@ -1,2 +1,18 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="flash_message">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</div>
+
+<h3><%= t('activerecord.models.user')+t('view.show') %></h3>
+
+<div class="">
+  <span><%= t('view.name') %></span>: <span class="user_data"><%= @user.name %></span>
+</div>
+
+<div class="">
+  <span><%= t('view.email') %></span>: <span id="user_email" class="user_data"><%= @user.email %></span>
+</div>
+
+<p class="to_other_page">
+  <%= link_to t('view.admin'), admin_users_path %></p>

@@ -6,6 +6,7 @@ FactoryBot.define do
     deadline { Date.today }
     status { 2 }
     priority { 2 }
+    user
   end
 
   # 作成するテストデータの名前を「second_task」とします
@@ -16,5 +17,6 @@ FactoryBot.define do
     deadline { Date.today - 2 }
     status { 0 }
     priority { 0 }
+    user
   end
 end

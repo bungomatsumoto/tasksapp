@@ -1,12 +1,19 @@
 ja:
   view:
+    admin: 管理者画面
+    signup: ユーザー登録
+    login: ログイン
+    logout: ログアウト
+    name: ユーザー名
     index: ユーザーのタスク一覧
     title: タスク名
+    title_count: タスク数
     explanation: タスク詳細
     deadline: 終了期限
-    create: タスクの新規登録
+    create: 新規登録
     show: 詳細
     edit: 編集
+    update: 更新
     destroy: 削除
     destroy_confirm: 本当に削除しますか？
     sort_by_deadline: 終了期限で並び替え
@@ -22,6 +29,10 @@ ja:
     pagination.previous: 直前のページ
     pagination.next: 次のページ
     pagination.last: 最後のページ
+    create my account: ユーザー登録する
+    cannot_save: 件のエラーがあります
+    my_page: さんのページ
+    profile: プロフィール
   activerecord:
     errors:
       messages:
@@ -31,12 +42,19 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       task: 'タスク'
+      user: 'ユーザー'
     attributes:
       task:
         title: タスク名
         explanation: タスク詳細
         deadline: 終了期限
         status: 進捗
+      user:
+        name: ユーザー名
+        email: email
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        admin: 管理者
   enums:
     task:
       status:
@@ -186,6 +204,7 @@ ja:
       submit: 保存する
       update: 更新する
       search: 検索
+      create my account: ユーザー登録
   number:
     currency:
       format:

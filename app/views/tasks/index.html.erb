@@ -42,6 +42,7 @@
       </tr>
 
     <% @tasks.each do |task| %>
+
       <tr>
         <td id="task_title" class="task_data"><%= task.title %></td>
         <td class="task_data"><%= task.explanation %></td>
@@ -59,6 +60,6 @@
 
     <%= paginate @tasks %>
 
-    <p class="to_other_page"><%= link_to t('view.create'), new_task_path %></p>
+    <p class="to_other_page"><%= link_to t('activerecord.models.task')+t('view.create'), new_task_path %></p>
 
   </div>

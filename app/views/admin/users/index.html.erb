@@ -1,0 +1,37 @@
+<h3>ユーザー一覧</h3>
+
+<div class="user_index">
+  <table class="table_container">
+    <tr>
+      <th class="table_header"><%= t('view.name') %></th>
+      <th class="table_header"><%= t('view.title_count') %></th>
+      <th class="table_header"><%= t('view.email') %></th>
+      <th class="table_header"><%= t('view.admin') %></th>
+      <th class="table_header"><%= t('view.created_at') %></th>
+      <th class="table_header"><%= t('view.updated_at') %></th>
+      <th class="option_order"><%= t('view.edit') %></th>
+      <th class="option_order"><%= t('view.destroy') %></th>
+    </tr>
+
+  <% @users.each do |user| %>
+
+    <tr>
+      <td id="user_title" class="user_data"><%= link_to user.name, admin_user_path(user.id) %></td>
+      <td id="user_title" class="user_data"><%= link_to user.tasks.count, user_path(user.id) %></td>
+      <td id="user_email" class="user_data"><%= user.email %></td>
+      <td class="user_data"><%= user.admin? ? '◯' : '-' %></td>
+      <td class="user_data"><%= user.created_at %></td>
+      <td class="user_data"><%= user.updated_at %></td>
+      <td class="option_order"><%= link_to t('view.edit'), edit_admin_user_path(user.id) %></td>
+      <td class="option_order">
+        <%= link_to t('view.destroy'), [:admin, user], method: :delete, data: { confirm: t('view.destroy_confirm')} %></td>
+    </tr>
+
+  <% end %>
+  </table>
+
+  <%= paginate @users %>
+
+  <p class="to_other_page"><%= link_to t('activerecord.models.user')+t('view.create'), new_admin_user_path %></p>
+
+</div>

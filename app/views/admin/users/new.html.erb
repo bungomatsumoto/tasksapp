@@ -1,0 +1,47 @@
+<h3><%= t('activerecord.models.user')+t('view.create') %></h3>
+
+<%= form_with(model: [:admin, @user], locale: true) do |f| %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <% @user.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  </div>
+
+  <div class="">
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>
+    管理者権限
+  </div>
+
+  <div class="">
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  </div>
+
+  <div class="">
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
+  </div>
+
+  <div class="">
+  <%= f.submit t('view.create my account'), id:"create" %>
+  <%#= f.button :button, type: :submit %>
+  </div>
+
+<% end %>
+
+<p class="to_other_page">
+  <%= link_to t('view.admin'), admin_users_path %></p>

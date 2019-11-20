@@ -24,6 +24,7 @@ ja:
         deadline: 終了期限
         status: 進捗
         priority: 優先順位
+        label: ラベル
       user:
         name: ユーザー名
         email: email
@@ -40,3 +41,4 @@ ja:
         low: 低
         middle: 中
         high: 高
+      label:

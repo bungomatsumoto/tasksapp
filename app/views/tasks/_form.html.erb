@@ -33,5 +33,12 @@
     <%= f.select :priority, Task.priorities.map { |k,v| [t("enums.task.priority.#{k}"), k] }  %>
   </div>
 
-    <p class="button"><%= f.submit %></p>
+  <div class="">
+    <%= f.label :label %><br>
+    <% Label.all.each do |l| %>
+      <%= f.check_box :label_ids, { multiple: true, checked: l[:checked], disabled: l[:disabled], include_hidden: false }, l[:id] %><%= l.name %>
+    <% end %>
+  </div>
+
+    <div class="button"><%= f.submit %></div>
 <% end %>

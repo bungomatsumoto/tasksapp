@@ -7,6 +7,13 @@
 <p><span class="task_detail"><%= t('view.deadline') %>:</span> <span class="task_detail02"><%= @task.deadline %></span></p>
 <p><span class="task_detail"><%= t('view.status') %>:</span> <span class="task_detail02"><%= t("enums.task.status.#{@task.status}") %></span></p>
 <p><span class="task_detail"><%= t('view.priority') %>:</span> <span class="task_detail02"><%= t("enums.task.priority.#{@task.priority}") %></span></p>
+<div>
+  <span class="task_detail"><%= t('view.label') %>:</span>
+  <% @task.labels.each do |label| %>
+  <span><%= label.name %></span>
+  <% end %>
+</div>
+
 
 
 <p class="to_other_page"><%= link_to t('view.edit'), edit_task_path(@task) %></p>

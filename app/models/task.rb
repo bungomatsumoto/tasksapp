@@ -11,4 +11,6 @@ class Task < ApplicationRecord
 
   paginates_per 10
   belongs_to :user, optional: true
+  has_many :labellings, dependent: :destroy
+  has_many :labels, through: :labellings
 end

@@ -3,26 +3,41 @@ class TasksController < ApplicationController
 
 
   def index
+    if params[:task]
+      @tasks = current_user.tasks
+                            .search_title(params.dig(:task, :title))
+                            .search_status(params.dig(:task, :status))
+                            .search_label(params.dig(:task, :label_id))
+                            .group(:id)
+                            .page(params[:page])
+
+    elsif params[:sort_by_deadline]
+      @tasks = current_user.tasks.page(params[:page]).order(deadline: :desc)
+
+    elsif params[:sort_by_priority]
+      @tasks = current_user.tasks.page(params[:page]).order(priority: :desc)
+
+    else
       @tasks = current_user.tasks.page(params[:page]).order(created_at: :desc)
-
-      if params[:sort_by_deadline]
-        @tasks = current_user.tasks.page(params[:page]).order(deadline: :desc)
-      end
-
-      if params[:sort_by_priority]
-        @tasks = current_user.tasks.page(params[:page]).order(priority: :desc)
-      end
-
-      if params[:task]
-        if params[:task][:title] && params[:task][:status]
-          @tasks = current_user.tasks.search_title_status(params[:task][:title],params[:task][:status])
-        elsif params[:task][:title].present?
-          @tasks = current_user.tasks.search_title(params[:task][:title])
-        elsif params[:task][:status].present?
-          @tasks = current_user.tasks.search_status(params[:task][:status])
-        end
+    end
+      # if params[:task]
+      #   binding.pry
+      #   if params[:task][:title] && params[:task][:status]
+      #     binding.pry
+      #     @tasks = current_user.tasks.search_title_status(params[:task][:title].params[:task][:status])
+      #   elsif params[:task][:title].present?
+      #     binding.pry
+      #     @tasks = current_user.tasks.search_title(params[:task][:title])
+      #   elsif params[:task][:status].present?
+      #     binding.pry
+      #     @tasks = current_user.tasks.search_status(params[:task][:status])
+      #   elsif params[:task][:label_id].present?
+      #     binding.pry
+      #     labelling = Labelling.where(label_id: params[:label_id])
+      #     @tasks = current_user.tasks.where(id: labelling.pluck(:task_id))
+      #   end
         # @tasks = Task.where("title LIKE ?", "%#{ params[:task][:title] }%").where(status: "#{ params[:task][:status] }")
-      end
+      # end
   end
 
   def new
@@ -66,5 +81,4 @@ class TasksController < ApplicationController
   def get_id_task
     @task = current_user.tasks.find(params[:id])
   end
-
 end

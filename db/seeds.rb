@@ -12,4 +12,4 @@
 # )
 
 
-%W[仕事 家族 友人 個人 継続 単発].each { |a| Label.create(name: a) }
+%W[  仕事 家族 友人 個人 継続 単発].each { |a| Label.create(name: a) }

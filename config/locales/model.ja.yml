@@ -2,6 +2,7 @@ ja:
   view:
     title_search: タスク名検索
     status_search: 進捗検索
+    label_search: ラベル検索
     search: 検索
     pagination.first: 先頭のページ
     pagination.previous: 直前のページ

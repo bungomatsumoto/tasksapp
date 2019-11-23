@@ -25,6 +25,7 @@ ja:
     completed: 完了
     title_search: タスク名で絞り込み
     status_search: 進捗で絞り込み
+    label_search: ラベルで絞り込み
     priority: 優先順位
     pagination.first: 先頭のページ
     pagination.previous: 直前のページ
@@ -34,6 +35,10 @@ ja:
     cannot_save: 件のエラーがあります
     my_page: さんのページ
     profile: プロフィール
+    forbidden: 指定されたページを表示する権限がありません
+    doesnt_exist: お探しのページは見つかりません
+    something_wrong: 一時的なエラーが発生しました
+    registerd_task: 登録済みタスク
   activerecord:
     errors:
       messages:

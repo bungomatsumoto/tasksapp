@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_020508) do
+ActiveRecord::Schema.define(version: 2019_11_20_075137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "labellings", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_labellings_on_label_id"
+    t.index ["task_id"], name: "index_labellings_on_task_id"
+  end
 
   create_table "labels", force: :cascade do |t|
     t.string "name", null: false
@@ -26,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_020508) do
     t.text "explanation", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "deadline", default: "2019-11-07", null: false
+    t.date "deadline", default: "2019-11-25"
     t.integer "status", default: 0
     t.integer "priority", default: 0
     t.bigint "user_id"
@@ -46,5 +55,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_020508) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "labellings", "labels"
+  add_foreign_key "labellings", "tasks"
   add_foreign_key "tasks", "users"
 end

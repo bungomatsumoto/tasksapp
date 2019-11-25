@@ -17,7 +17,7 @@
 
     <tr>
       <td id="user_title" class="user_data"><%= link_to user.name, admin_user_path(user.id) %></td>
-      <td id="user_title" class="user_data"><%= link_to user.tasks.count, user_path(user.id) %></td>
+      <td id="user_title" class="user_data"><%= link_to user.tasks.count, admin_user_path(user.id) %></td>
       <td id="user_email" class="user_data"><%= user.email %></td>
       <td class="user_data"><%= user.admin? ? '◯' : '-' %></td>
       <td class="user_data"><%= user.created_at %></td>
@@ -33,5 +33,7 @@
   <%= paginate @users %>
 
   <p class="to_other_page"><%= link_to t('activerecord.models.user')+t('view.create'), new_admin_user_path %></p>
+  <p class="to_other_page"><%= link_to t('view.index'), tasks_path %></p>
+
 
 </div>

@@ -47,7 +47,7 @@ RSpec.describe User, type: :system do
       end
       it 'タスク一覧ページに遷移する' do
         visit new_user_path
-        expect(page).to have_content '進捗検索'
+        expect(page).to have_content "ユーザーのタスク一覧"
       end
     end
   end
@@ -141,7 +141,6 @@ RSpec.describe User, type: :system do
         # click_on '更新'
         # find_button('更新')
         click_button('update')
-        # expect(page).to have_content '更新しました'
         expect(page).to have_content 'ユーザー詳細'
       end
     end

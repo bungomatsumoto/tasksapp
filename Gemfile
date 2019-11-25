@@ -17,6 +17,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bcrypt'
+gem 'kaminari'
 
 group :development, :test do
 
@@ -30,8 +32,6 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
-  gem 'kaminari'
-  gem 'bcrypt', '3.1.11'
 end
 
 group :development do
@@ -45,7 +45,6 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'webdrivers'
-  gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'database_cleaner'

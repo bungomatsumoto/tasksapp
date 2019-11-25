@@ -11,5 +11,16 @@
 #    name: 'first_person',
 # )
 
+10.times do |index|
+  Task.create(title: "タスク#{index}", explanation: "explanation#{index}")
+end
 
-%W[  仕事 家族 友人 個人 継続 単発].each { |a| Label.create(name: a) }
+10.times do |index|
+  User.create(name: "ユーザー#{index}", email: "user#{index}@gmail.com", password: "password#{index}", password_confirmation: "password#{index}")
+end
+
+3.times do |index|
+  User.create!(name: "管理者#{index}", email: "admin_user#{index}@gmail.com", password: "adminpassword#{index}", password_confirmation: "adminpassword#{index}", admin: true)
+end
+
+%W[仕事 家族 友人 個人 継続 単発].each { |a| Label.create(name: a) }

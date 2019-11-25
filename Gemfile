@@ -17,7 +17,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt'
+gem 'kaminari'
 
 group :development, :test do
 
@@ -31,7 +32,6 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
-  gem 'kaminari'
 end
 
 group :development do

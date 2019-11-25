@@ -26,6 +26,7 @@
   - $ rails assets:precompile RAILS_ENV=production
   - $ git add #
   - $ git commit -m “#”
-  - $ heroku create
-  - $ git push heroku master
+  - $ (heroku create)
+  - $ git push heroku (development:)master
   - $ heroku run rails db:migrate
+  - $ heroku run rails db:seed
